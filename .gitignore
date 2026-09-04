@@ -5,5 +5,3 @@ myenv
 .vscode
 
 __pycache__
-
-.gitignore

@@ -15,7 +15,7 @@ model = ChatGroq(model = "qwen/qwen3.8-27b")
 loader = PyPDFLoader("cricket_notes.pdf")
 
 documents = loader.load()
-print(documents[0])
+#print(documents[0])
 
 Spliter = RecursiveCharacterTextSplitter( chunk_size = 400,
 chunk_overlap = 0)
@@ -26,7 +26,7 @@ embedding = HuggingFaceEmbeddings( model_name= "sentence-transformers/all-MiniLM
 
 vectorstore = FAISS.from_documents(result,embedding)
 
-retriever = vectorstore.as_retriever(search_kwargs={"k":1})
+retriever = vectorstore.as_retriever(search_kwargs={"k":3})
 
 prompt = ChatPromptTemplate.from_template("""Answer the question based on the context provided and if you don't know anything about the question asked simply return "I don't Know about that ":
 context: {context}
